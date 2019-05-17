@@ -8,7 +8,7 @@ class Board
     Array.new(8) {Array.new(8, NullPiece.new)}
   end
 
-  def self.populated
+  def self.populate
     rows = Array.new(8) {Array.new}
     white = Array.new(8, Piece.new) #back pieces
     black = Array.new(8, Piece.new)
@@ -33,16 +33,19 @@ class Board
     @sentinel = NullPiece.new
   end
 
-  def movie_piece(color, start_pos, end_pos)
+  def move_piece(color, start_pos, end_pos)
     moving_piece = self[start_pos]
-    valid_moves = moving_piece.valid_moves
+    # valid_moves = moving_piece.valid_moves
 
     if moving_piece.is_a?(NullPiece)
       raise "There is no piece at the start position"
-    elsif !valid_moves.include?(end_pos)
-      raise "Your piece cannot move to this position"
+    # elsif !valid_moves.include?(end_pos)
+    #   raise "Your piece cannot move to this position"
     end
 
+    self[start_pos] = NullPiece.new
+    self[end_pos] = moving_piece
+    return true
   end
 
 

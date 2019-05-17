@@ -15,5 +15,6 @@ class Piece
 
   def valid_moves?
     #return array
+    []
   end
 end
