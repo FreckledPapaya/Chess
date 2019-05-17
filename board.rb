@@ -2,8 +2,16 @@ require_relative "piece.rb"
 
 class Board
 
-  def initialize
-    @grid = Array.new(8) {Array.new(8)}
+  def self.empty_grid
+    Array.new(8) {Array.new(8, Piece.new(nil))}
+  end
+
+  def self.populated_grid
+
+  end
+
+  def initialize(grid = Board.empty_grid)
+    @grid = grid
   end
 
   def populate_grid

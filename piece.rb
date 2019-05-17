@@ -1,12 +1,12 @@
 
 class Piece
-  attr_reader :name
+  attr_reader :value
 
-  def initialize
-    @name = "P"
+  def initialize(value)
+    @value = value
   end
 
   def inspect
-    self.name
+    self.value
   end
 end
