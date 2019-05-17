@@ -1,6 +1,10 @@
 class NullPiece < Piece
 
   def initialize
-    @value = nil
+    @value = "nil"
+  end
+
+  def inspect
+    self.value
   end
 end

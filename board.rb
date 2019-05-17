@@ -1,13 +1,15 @@
 require_relative "piece.rb"
+require_relative "null_piece.rb"
 
 class Board
+  attr_reader :rows
 
   def self.empty_grid
     Array.new(8) {Array.new(8, NullPiece.new)}
   end
 
-  def self.populated_grid
-    rows = Array.new(8) {Array.new(8)}
+  def self.populated
+    rows = Array.new(8) {Array.new}
     white = Array.new(8, Piece.new) #back pieces
     black = Array.new(8, Piece.new)
 
@@ -24,6 +26,7 @@ class Board
         8.times {rows[i] << NullPiece.new}
       end
     end
+  end
 
   def initialize(rows = Board.empty_grid)
     @rows = rows
