@@ -14,24 +14,34 @@ class Board
     @grid = grid
   end
 
-  def populate_grid
-    
-  end
-
-  def movie_piece(start_pos, end_pos)
+  def movie_piece(color, start_pos, end_pos)
+    if self[start_pos].value == nil
+      raise "There is no piece at the start position"
+    elsif #the piece cannot move to end_pos
+      raise "Your piece cannot move to this position"
+    end
 
   end
 
 
   #helper methods
 
-  def [](num1, num2)
-    @grid[num1][num2]
+  def [](pos)
+    x, y = pos
+    @grid[x][y]
   end
 
-  def valid_pos?(num1,)
-  
+  def []=(pos, value)
+    x, y = pos
+    @grid[x][y] = value
+  end
 
+  def valid_pos?(pos)
+    x, y = pos
+    if x >= 0 && x < 8 && y >= 0 && y < 8
+      return true
+    end
+    false
   end
 
   
