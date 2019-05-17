@@ -11,13 +11,16 @@ class Board
   end
 
   def initialize(grid = Board.empty_grid)
-    @grid = grid
+    @rows = grid
+    @sentinel = NullPiece.new
   end
 
   def movie_piece(color, start_pos, end_pos)
-    if self[start_pos].value == nil
+    moving_piece = self[start_pos]
+    valid_moves = moving_piece.valid_moves
+    if moving_piece.value == nil #moving_piece.is_a?(NullPiece)
       raise "There is no piece at the start position"
-    elsif #the piece cannot move to end_pos
+    elsif !valid_moves.include?(end_pos)
       raise "Your piece cannot move to this position"
     end
 
@@ -28,12 +31,12 @@ class Board
 
   def [](pos)
     x, y = pos
-    @grid[x][y]
+    @rows[x][y]
   end
 
   def []=(pos, value)
     x, y = pos
-    @grid[x][y] = value
+    @rows[x][y] = value
   end
 
   def valid_pos?(pos)
