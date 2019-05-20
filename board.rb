@@ -5,7 +5,7 @@ class Board
   attr_reader :rows
 
   def self.empty_grid
-    Array.new(8) {Array.new(8, @sentinel)}
+    Array.new(8) {Array.new(8, NullPiece)}
   end
 
   def self.populate
@@ -23,14 +23,14 @@ class Board
       elsif i == 7
         rows[i] = black
       else
-        8.times {rows[i] << @sentinel}
+        8.times {rows[i] << NullPiece}
       end
     end
   end
 
   def initialize(rows = Board.empty_grid)
     @rows = rows
-    @sentinel = NullPiece.new
+    @sentinel = NullPiece
   end
 
   def move_piece(color, start_pos, end_pos)
@@ -53,13 +53,13 @@ class Board
 
   #helper methods
 
-  def [](pos)
-    x, y = pos
+  def [](x, y)
+    # x, y = pos
     @rows[x][y]
   end
 
-  def []=(pos, value)
-    x, y = pos
+  def []=(x, y, value)
+    # x, y = pos
     @rows[x][y] = value
   end
 
