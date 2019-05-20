@@ -5,7 +5,7 @@ class Board
   attr_reader :rows
 
   def self.empty_grid
-    Array.new(8) {Array.new(8, NullPiece.new)}
+    Array.new(8) {Array.new(8, @sentinel)}
   end
 
   def self.populate
@@ -23,7 +23,7 @@ class Board
       elsif i == 7
         rows[i] = black
       else
-        8.times {rows[i] << NullPiece.new}
+        8.times {rows[i] << @sentinel}
       end
     end
   end
@@ -37,13 +37,15 @@ class Board
     moving_piece = self[start_pos]
     # valid_moves = moving_piece.valid_moves
 
-    if moving_piece.is_a?(NullPiece)
+    if !valid_pos?(start_pos) || !valid_pos?(end_pos)
+      raise "Invalid position; choose coordinates between 0 and 7"
+    elsif moving_piece.is_a?(NullPiece)
       raise "There is no piece at the start position"
     # elsif !valid_moves.include?(end_pos)
     #   raise "Your piece cannot move to this position"
     end
 
-    self[start_pos] = NullPiece.new
+    self[start_pos] = @sentinel
     self[end_pos] = moving_piece
     return true
   end
