@@ -21,6 +21,8 @@ class Display
                     this_row << piece.value
                 end
             end
+
+    #THIS COLORIZE BIT STILL NEED FIXING
             if cursor.cursor_pos[0] == row
                 col = cursor.cursor_pos[1]
                 puts "#{i} #{this_row[0...col].join(" ")} " + "#{this_row[col]}".red + " #{this_row[col+1..-1].join(" ")}"

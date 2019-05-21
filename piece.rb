@@ -2,11 +2,11 @@
 class Piece
   attr_reader :value
 
-  def initialize #(color, board, pos)
+  def initialize(color, board, pos)
     @value = "P"
-    # @color = color
-    # @board = board
-    # @pos = pos
+    @color = color
+    @board = board
+    @pos = pos
   end
 
   def inspect
