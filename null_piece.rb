@@ -1,11 +1,17 @@
 require "singleton"
+require_relative "piece.rb"
 
-class NullPiece < Piece
+class NullPiece
   attr_reader :value
   
   include Singleton
+
   def initialize
     @value = nil
+  end
+
+  def moves
+    []
   end
   
 end

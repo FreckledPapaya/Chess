@@ -15,16 +15,16 @@ class Board
   
   def populate
     rows = Array.new(8) {Array.new}
-    white = Array.new(8, Piece.new) #back pieces
-    black = Array.new(8, Piece.new)
+    white = Array.new(8, Piece.new(:w, self)) #back pieces
+    black = Array.new(8, Piece.new(:b, self))
 
     rows.each_with_index do |row, i|
       if i == 0
         rows[i] = white
       elsif i == 1
-        8.times {rows[i] << Piece.new} #white pawns
+        8.times {rows[i] << Piece.new(:w, self)} #white pawns
       elsif i == 6
-        8.times {rows[i] << Piece.new} #black pawns
+        8.times {rows[i] << Piece.new(:b, self)} #black pawns
       elsif i == 7
         rows[i] = black
       else
