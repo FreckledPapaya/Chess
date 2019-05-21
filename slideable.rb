@@ -1,11 +1,14 @@
-module Stlideable
+module Slideable
     def moves
         options = []
 
-        move_diffs.each do |diff|
-            options << [pos[0] + diff[0], pos[1] + diff[1]]
+        move_dirs.each do |dir|
+            pos_option = pos
+            until !valid_pos?(pos_option)
+                pos_option = [pos_option[0] + dir[0], pos_option[1] + dir[1]]
+                options << pos_option
+            end
         end
-        
-        options.select {|pos| valid_pos?(pos)}
+        options
     end
 end

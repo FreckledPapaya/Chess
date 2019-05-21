@@ -39,8 +39,7 @@ class Board
     rows
   end
 
-  def update_positions
-    
+  def update_positions 
     rows.each_with_index do |subarr, row|
       subarr.each_with_index do |piece, col|
         next if piece == NullPiece
