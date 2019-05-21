@@ -1,5 +1,6 @@
 require_relative "piece.rb"
 require_relative "null_piece.rb"
+require "byebug"
 
 class Board
   attr_reader :rows
@@ -31,8 +32,22 @@ class Board
         8.times {rows[i] << NullPiece}
       end
     end
-
     @rows = rows
+
+    update_positions
+
+    rows
+  end
+
+  def update_positions
+    
+    rows.each_with_index do |subarr, row|
+      subarr.each_with_index do |piece, col|
+        next if piece == NullPiece
+        piece.pos = [row, col]
+      end
+    end
+    true
   end
 
   def move_piece(color, start_pos, end_pos)
