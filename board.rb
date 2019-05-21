@@ -7,8 +7,13 @@ class Board
   def self.empty_grid
     Array.new(8) {Array.new(8, NullPiece)}
   end
-
-  def self.populate
+  
+  def initialize
+    @rows = populate
+    @sentinel = NullPiece
+  end
+  
+  def populate
     rows = Array.new(8) {Array.new}
     white = Array.new(8, Piece.new) #back pieces
     black = Array.new(8, Piece.new)
@@ -26,11 +31,8 @@ class Board
         8.times {rows[i] << NullPiece}
       end
     end
-  end
 
-  def initialize(rows = Board.empty_grid)
     @rows = rows
-    @sentinel = NullPiece
   end
 
   def move_piece(color, start_pos, end_pos)
