@@ -1,5 +1,5 @@
 require_relative "piece.rb"
-require_relative "null_piece.rb"
+# require_relative "null_piece.rb"
 require "byebug"
 
 class Board
@@ -16,16 +16,16 @@ class Board
   
   def populate
     rows = Array.new(8) {Array.new}
-    white = Array.new(8, Piece.new(:w, self)) #back pieces
-    black = Array.new(8, Piece.new(:b, self))
+    white = Array.new(8, Piece.new(:W, self)) #back pieces
+    black = Array.new(8, Piece.new(:B, self))
 
     rows.each_with_index do |row, i|
       if i == 0
         rows[i] = white
       elsif i == 1
-        8.times {rows[i] << Piece.new(:w, self)} #white pawns
+        8.times {rows[i] << Piece.new(:W, self)} #white pawns
       elsif i == 6
-        8.times {rows[i] << Piece.new(:b, self)} #black pawns
+        8.times {rows[i] << Piece.new(:B, self)} #black pawns
       elsif i == 7
         rows[i] = black
       else
