@@ -4,15 +4,18 @@ class Piece
   attr_reader :value, :color, :board
   attr_accessor :pos
 
-  def initialize(color, board) #pos
-    @value = "P"
+  def initialize(color, board)
     @color = color
     @board = board
     @pos = [0,0] #change to pos
   end
 
+  def symbol
+    :P
+  end
+
   def inspect
-    self.value
+    self.symbol
   end
 
   def valid_moves?

@@ -18,7 +18,7 @@ class Display
                 if piece == NullPiece
                     this_row << "_"
                 else
-                    this_row << piece.value
+                    this_row << piece.symbol
                 end
             end
 

@@ -16,7 +16,7 @@ module Stepable
 
             # bug - running #capture_pos? on NullPiece :( 
             if piece_present?(position)
-                if capture_pos?(pos)
+                if capture_pos?(position)
                     position
                 else
                     []
