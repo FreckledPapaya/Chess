@@ -2,6 +2,9 @@ require_relative "piece.rb"
 # require_relative "null_piece.rb"
 require "byebug"
 
+# create require_relative.rb file to consolidate all of the pieces "board.rb" will need, 
+# only require board in the game.rb file
+
 class Board
   attr_reader :rows
 
