@@ -5,6 +5,6 @@ class King < Piece
     include Stepable
 
     def move_diffs
-        [[0, 1], [0, -1], [1, 0], [-1, 0]]
+       HORIZONTAL_DIRS + DIAGONAL_DIRS
     end
 end
